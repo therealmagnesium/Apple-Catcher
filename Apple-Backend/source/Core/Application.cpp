@@ -27,6 +27,7 @@ namespace Apple
             state.handle = app;
 
             Graphics::RendererInit();
+            SetExitKey(KEY_NULL);
 
             isInitialized = true;
             TraceLog(LOG_INFO, "The application was initialized successfully");
@@ -38,12 +39,23 @@ namespace Apple
 
             while (state.isRunning)
             {
+                Camera* primaryCamera = Graphics::GetPrimaryCamera();
                 state.isRunning = !WindowShouldClose();
+
+                if (primaryCamera == NULL)
+                {
+                    TraceLog(LOG_FATAL, "Cannot run the application without a primary camera!");
+                    return;
+                }
+
                 state.handle->OnUpdate();
 
                 Graphics::RendererBegin();
 
+                BeginMode3D(*primaryCamera);
                 state.handle->OnRender();
+                EndMode3D();
+
                 state.handle->OnRenderUI();
 
                 Graphics::RendererEnd();

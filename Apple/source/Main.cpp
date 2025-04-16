@@ -14,7 +14,7 @@ void Apple_EntryPoint(Application* app)
     app->config.windowHeight = 900;
 
     app->OnCreate = Apple_OnCreate;
-    app->OnUpdate = Apple_OnCreate;
+    app->OnUpdate = Apple_OnUpdate;
     app->OnRender = Apple_OnRender;
     app->OnRenderUI = Apple_OnRenderUI;
     app->OnShutdown = Apple_OnShutdown;

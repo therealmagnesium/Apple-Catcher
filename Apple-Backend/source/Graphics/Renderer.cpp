@@ -47,5 +47,10 @@ namespace Apple
             state.clearColor.b = b;
             state.clearColor.a = 0xFF;
         }
+
+        void SetPrimaryCamera(Camera* camera)
+        {
+            state.primaryCamera = camera;
+        }
     }
 }

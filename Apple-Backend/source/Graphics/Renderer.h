@@ -19,6 +19,8 @@ namespace Apple
         void RendererEnd();
 
         Camera* GetPrimaryCamera();
+
         void SetClearColor(u8 r, u8 g, u8 b);
+        void SetPrimaryCamera(Camera* camera);
     }
 }
